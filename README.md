@@ -39,9 +39,33 @@ python3 -m build
 ```
 The tar.gz file is a source archive whereas the .whl file is a built distribution. Newer pip versions preferentially install built distributions, but will fall back to source archives if needed.
 
-## Testing
+## Testing Publish
 Publish the package to the TestPyPi repository to check if all works well.
+Install twine:
+```python
+python3 -m pip install --upgrade twine
+```
+Twine is the primary tool developers use to upload packages to the Python Package Index or other Python package indexes. It is a command-line program that passes program files and metadata to a web API. Developers use it because it’s the official PyPI upload tool, it’s fast and secure, it’s maintained, and it reliably works.
 
+Run Twine to upload all of the archives under dist:
+```python
+python3 -m twine upload --repository testpypi dist/*
+```
+
+## Installing and testing the package
+Create a virtual environment then install the package:
+```python
+python -m pip install --index-url https://test.pypi.org/simple/ --no-deps my-first-package-jose-nunes
+```
+
+Open a python terminal with the created venv:
+```python
+from my_first_package import list_dir
+for i in list_dir.list_directories():
+    print(i)
+```
+
+Note that the import package is my_first_package regardless of what name given in distribution package in setup.cfg or setup.py (in this case, my-first-package-jose-nunes).
 
 ## Referencies
 - [Packaging Python Projects](https://packaging.python.org/tutorials/packaging-projects/)
