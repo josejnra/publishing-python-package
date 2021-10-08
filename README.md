@@ -39,7 +39,7 @@ python3 -m build
 ```
 The tar.gz file is a source archive whereas the .whl file is a built distribution. Newer pip versions preferentially install built distributions, but will fall back to source archives if needed.
 
-## Testing Publish
+## Testing Publishing
 Publish the package to the TestPyPi repository to check if all works well.
 Install twine:
 ```python
