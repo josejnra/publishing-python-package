@@ -1,6 +1,73 @@
-[build-system]
-requires = [
-    "setuptools>=42",
-    "wheel"
+[tool.poetry]
+name = "my-first-package-jose-nunes"
+version = "0.0.3"
+description = "Creating my first python package"
+authors = ["José Nunes <josenunesra@gmail.com>"]
+repository = "https://github.com/josejnra/my-python-package/my-first-package"
+homepage = "https://github.com/josejnra/my-python-package/my-first-package"
+documentation = "https://github.com/josejnra/my-python-package/my-first-package"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Version Control :: Git",
+    "Topic :: System :: Archiving :: Packaging",
+    "Topic :: System :: Installation/Setup",
+    "Topic :: System :: Software Distribution",
+    "Development Status :: 3 - Alpha"
 ]
-build-backend = "setuptools.build_meta"
+packages = [
+    { include = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true  # Includes a trailing comma on multi line imports that include parentheses
+line_length = 120  # max length of an import line
+known_first_party = ["{{ cookiecutter.package_name }}"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+lines_between_sections = 1
+
+[tool.mypy]
+exclude = []  # regular expressions
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "test-pypi"
+url = "https://test.pypi.org/legacy/"
+default = true
