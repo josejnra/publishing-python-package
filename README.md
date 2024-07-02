@@ -19,7 +19,9 @@ my-first-package
 - pyproject.toml - tells build tools (like pip and build) what is required to build your project. 
 - setup.cfg - is the configuration file for setuptools. It tells setuptools about your package (such as the name and version) as well as which code files to include.
 
-## Configuring metadata
+## An "Old Way"
+
+### Configuring metadata
 There are two types of metadata: static and dynamic.
 
 - Static metadata (`setup.cfg`): guaranteed to be the same every time. This is simpler, easier to read, and avoids many common errors, like encoding errors.
@@ -27,7 +29,7 @@ There are two types of metadata: static and dynamic.
 
 Static metadata (setup.cfg) should be preferred. Dynamic metadata (setup.py) should be used only as an escape hatch when absolutely necessary. setup.py used to be required, but can be omitted with newer versions of setuptools and pip.
 
-## Build
+### Build
 Make sure you have the latest version of PyPA’s build installed:
 ```python
 python3 -m pip install --upgrade build
@@ -39,7 +41,7 @@ python3 -m build
 ```
 The tar.gz file is a source archive whereas the .whl file is a built distribution. Newer pip versions preferentially install built distributions, but will fall back to source archives if needed.
 
-## Testing Publishing
+### Testing Publishing
 Publish the package to the TestPyPi repository to check if all works well.
 Install twine:
 ```python
@@ -52,7 +54,7 @@ Run Twine to upload all of the archives under dist:
 python3 -m twine upload --repository testpypi dist/*
 ```
 
-## Installing and testing the package
+### Installing and testing the package
 Create a virtual environment then install the package:
 ```python
 python -m pip install --index-url https://test.pypi.org/simple/ --no-deps my-first-package-jose-nunes
@@ -66,6 +68,8 @@ for i in list_dir.list_directories():
 ```
 
 Note that the import package is my_first_package regardless of what name given in distribution package in setup.cfg or setup.py (in this case, my-first-package-jose-nunes).
+
+## TODO: publish using poetry
 
 ## Referencies
 - [Packaging Python Projects](https://packaging.python.org/tutorials/packaging-projects/)
