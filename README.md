@@ -69,7 +69,16 @@ for i in list_dir.list_directories():
 
 Note that the import package is my_first_package regardless of what name given in distribution package in setup.cfg or setup.py (in this case, my-first-package-jose-nunes).
 
-## TODO: publish using poetry
+## Poetry
+
+Commands to build and publish the package using poetry:
+```shell
+poetry build
+poetry config pypi-token.test-pypi <API_TOKEN>  # for test pypi
+poetry config pypi-token.pypi <API_TOKEN>  # for pypi
+poetry publish -r test-pypi # for test pypi
+poetry publish  # for pypi
+```
 
 ## Referencies
 - [Packaging Python Projects](https://packaging.python.org/tutorials/packaging-projects/)
