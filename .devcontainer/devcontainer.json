@@ -10,6 +10,10 @@
 	],
 	"runArgs": ["--name", "vscode-publishing-python-package"],
 
+	"remoteEnv": {
+		"PYTHONPYCACHEPREFIX": "/home/vscode/.cache/cpython/"
+	},
+
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
@@ -29,13 +33,7 @@
 		"vscode": {
 			// Set *default* container specific settings.json values on container create.
 			"settings": { 
-				"terminal.integrated.scrollback": 10000,
-				"python.defaultInterpreterPath": "/workspaces/publishing-python-package/.venv/bin/python",
-				"mypy.dmypyExecutable": "/workspaces/publishing-python-package/.venv/bin/dmypy",
-				"mypy-type-checker.path": ["/workspaces/publishing-python-package/.venv/bin/mypy"],
-				"python.testing.pytestPath": "/workspaces/publishing-python-package/.venv/bin/pytest",
-				"flake8.interpreter": ["/workspaces/publishing-python-package/.venv/bin/flake8"],
-				"flake8.path": ["/workspaces/publishing-python-package/.venv/bin/flake8"]
+				"terminal.integrated.scrollback": 10000
 			},
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
